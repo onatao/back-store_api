@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class Category implements Serializable {
 	private Long categoryId;
 	private String categoryName;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "categories") // Mapping reference (made in Product) 
 	private Set<Product> products = new HashSet<>();
 	
