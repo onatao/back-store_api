@@ -31,5 +31,4 @@ public class UserResource {
 		User userResponse = service.findById(id);
 		return new ResponseEntity<>(userResponse, HttpStatus.OK);
 	}
-
 }

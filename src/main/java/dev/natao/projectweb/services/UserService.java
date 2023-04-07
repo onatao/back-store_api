@@ -23,5 +23,4 @@ public class UserService {
 		Optional<User> userOpt = repository.findById(id);
 		return userOpt.get();
 	}
-
 }
