@@ -1,7 +1,5 @@
 package dev.natao.projectweb.entities.enums;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 public enum OrderStatus {
 	
 	WAITING_PAYMENT(1),
@@ -24,6 +22,7 @@ public enum OrderStatus {
 	
 	// Convert numeric value enum value
 	public static OrderStatus valueOf(int code) {
+		// Return the Enum corresponding id param
 		for (OrderStatus status: OrderStatus.values()) {
 			if (status.getCode() == code) {
 				return status;
