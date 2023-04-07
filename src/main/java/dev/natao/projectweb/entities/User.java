@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +25,7 @@ public class User implements Serializable {
 	private String userPhone;
 	private String userPassword;
 	
+	@OneToMany(mappedBy = "client") // Same name on Order class (attribute)	
 	private List<Order> orders = new ArrayList<>();
 	
 	public User() {}
