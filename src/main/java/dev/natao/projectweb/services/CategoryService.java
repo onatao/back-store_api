@@ -13,7 +13,7 @@ import dev.natao.projectweb.repositories.CategoryRepository;
 public class CategoryService {
 	
 	@Autowired
-	CategoryRepository repository;
+	private CategoryRepository repository;
 	
 	public List<Category> findAll() {
 		List<Category> responseList = repository.findAll();
