@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dev.natao.projectweb.entities.User;
 import dev.natao.projectweb.repositories.UserRepository;
 
+@Service
 public class UserService {
 	
 	@Autowired
