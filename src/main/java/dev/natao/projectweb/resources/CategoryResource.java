@@ -14,7 +14,7 @@ import dev.natao.projectweb.entities.Category;
 import dev.natao.projectweb.services.CategoryService;
 
 @RestController
-@RequestMapping(value = "/category")
+@RequestMapping(value = "/categories")
 public class CategoryResource {
 	
 	@Autowired
