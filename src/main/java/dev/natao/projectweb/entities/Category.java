@@ -1,7 +1,9 @@
 package dev.natao.projectweb.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,8 @@ public class Category implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long categoryId;
 	private String categoryName;
+	
+	private Set<Product> products = new HashSet<>();
 	
 	public Category() {}
 
@@ -42,10 +46,15 @@ public class Category implements Serializable {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
+	
+	
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(categoryId);
+	public Set<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	@Override
