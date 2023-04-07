@@ -28,6 +28,8 @@ public class Order implements Serializable {
 	@JsonIgnore
 	@JoinColumn(name = "client_id")
 	private User client;
+	
+	public Order() {}
 
 	public Order(Long orderId, Instant orderMoment, User client) {
 		super();
