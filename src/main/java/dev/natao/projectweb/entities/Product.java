@@ -1,7 +1,9 @@
 package dev.natao.projectweb.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +23,8 @@ public class Product implements Serializable {
 	private String productDescription;
 	private Double productPrice;
 	private String productImg;
+	
+	private Set<Category> categories = new HashSet<>();
 	
 	public Product() {}
 
@@ -72,6 +76,12 @@ public class Product implements Serializable {
 
 	public void setProductImg(String productImg) {
 		this.productImg = productImg;
+	}
+	
+	
+
+	public Set<Category> getCategories() {
+		return categories;
 	}
 
 	@Override
