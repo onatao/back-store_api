@@ -1,6 +1,7 @@
 package dev.natao.projectweb.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,6 +15,11 @@ public class UserService {
 	
 	public List<User> findAll() {
 		return repository.findAll();
+	}
+	
+	public User findById(Long id) {
+		Optional<User> userOpt = repository.findById(id);
+		return userOpt.get();
 	}
 
 }
