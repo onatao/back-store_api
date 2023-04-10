@@ -3,6 +3,8 @@ package dev.natao.projectweb.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import dev.natao.projectweb.entities.pk.OrderItemPK;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -30,6 +32,7 @@ public class OrderItem implements Serializable {
 	}
 	
 	// OrderItemPK getters and setters
+	@JsonIgnore
 	public Order gerOrder() {
 		return id.getOrder(); // from OrderItemPK
 	}
