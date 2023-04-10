@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import dev.natao.projectweb.entities.OrderItem;
 
 @Repository
-public interface OrdemItemRepository extends JpaRepository<OrderItem, Long>{
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long>{
 
 }
