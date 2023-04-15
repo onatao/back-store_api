@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import dev.natao.projectweb.services.exceptions.DatabaseException;
+import dev.natao.projectweb.services.exceptions.EntityFindException;
 import dev.natao.projectweb.services.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -34,6 +35,14 @@ public class ResourceExceptionHandler {
 		String error = "Database violation";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		
+		StandardError err = new StandardError(Instant.now(), status.value(), error, exception.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
+	
+	@ExceptionHandler(EntityFindException.class)
+	public ResponseEntity<StandardError> entityException (EntityFindException exception, HttpServletRequest request) {
+		String error = "Entity error";
+		HttpStatus status = HttpStatus.NOT_FOUND;
 		StandardError err = new StandardError(Instant.now(), status.value(), error, exception.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
