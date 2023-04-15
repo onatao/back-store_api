@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import dev.natao.projectweb.entities.User;
 import dev.natao.projectweb.repositories.UserRepository;
 import dev.natao.projectweb.services.exceptions.DatabaseException;
+import dev.natao.projectweb.services.exceptions.EntityFindException;
 import dev.natao.projectweb.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class UserService {
@@ -44,11 +46,14 @@ public class UserService {
 	}
 	
 	public User update(Long id, User user) {
-		// Reference entity
-		User entity = repository.getReferenceById(id); 
-		updateData(entity, user);
-		return repository.save(entity);
-		
+		try {
+			// Reference entity
+			User entity = repository.getReferenceById(id); 
+			updateData(entity, user);
+			return repository.save(entity);
+		} catch (EntityNotFoundException e) {
+			throw new EntityFindException(id);
+		}
 	}
 	/**
 	 * Update entity data.
